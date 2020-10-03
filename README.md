@@ -20,7 +20,7 @@
 - float 는 원래 이미지 등의 요소 주위에 텍스트를 둘러 표현할 때 사용할 디자인 패턴으로 고안되었다.
 ![float](./image/float.jpg)
 - float 엘리먼트의 너비를 정확하게 계산하면 마치 컬럼처럼 엘리먼트를 한 줄로 나란하게 배열할 수 있다.
-- **예시 : https://codesandbox.io/s/inspiring-moore-z21gs**
+- **예시 : https://codesandbox.io/s/css-reiaus-yeje-ntxdl**
 > 😭 앗? 그런데 카드2가 내용이 조금 길어지면 의도하지 않게 레이아웃이 망가진다. 실질적인 해결 방법은 그리드의 가 줄을 wrapper 라는 하나의 요소로 감싸는 것이다. 그리고 wrapper 에는 **clear:both** 를 적용해 두 번째 줄에 있는 요소가 첫 번째 줄의 공간을 침범하지 않도록 한다. 괜찮은 방법이지만, 줄마다 새로운 마크업을 추가해야 하는 번거로움이 있다. 대신 사용할 수 있는 방법으로는 플로팅이 적용된 요소에 **display : inline-block** 을 적용하는 것이 있다. inline 엘리먼트에는 공백을 그대로 유지한다는 특성이 있다. **결론적으로 float 또는 inline-block 이 적용된 레이아웃을 사용하면 약간의 타협은 필요하지만 그럭저럭 정돈된 그리드 레이아웃을 구현할 수 있다. 하지만 엘리먼트의 배경색이나 외곽선, 컨텐츠의 크기만큼 늘어나므로 들쑥날쑥하게 된다.**
 
 - display : table 속성은 CSS 테이블 레이아웃이라는 CSS 명세와 관련이 있다. 말그대로 HTML 표를 꾸밀 때 쓰일 속성이다. display : table / display : table-row / display : table-cell -> 그러나 뜻하지 않게 div 나 목록 등에도 적용할 수 있다. -> 😰 이 테이블의 줄과 칸에는 margin 이 적용되지 않는다. cell 사이의 간격을 넓히 때는 display : table 속성이 적용된 요소에 border-spacing 속성을 사용한다. 여기서 vertical-align 속성을 사용한다면 HTML 테이블과 마찬가지로 각 칸 안에 있는 컨텐츠를 수직 정렬할 수 있다.
