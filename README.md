@@ -170,3 +170,63 @@ or
 ```
 - ```column-count``` 와 ```column-width``` 속성을 함께 사용하면 ```column-count``` 속성은 최대 컬럼 개수로 사용된다.
 - ```column-width``` 속성을 사용할 때는 픽셀 너비를 정확하게 설정할 수 없다. 컨테이너에서 사용할 수 있는 공간에 따라 어느 정도 오차가 생긴다. 연속적인 컨텐츠를 여러 컬럼으로 나누어 배치할 방법은 이 명세가 유일하다. 다른 방법은 포함된 컨텐츠와 상관없이 컨텐츠의 흐름보다는 자식 요소에 작용한다는 차이가 있다.
+
+---
+
+## flex 박스
+- flex box module 명세를 통해 반응형 또는 유연한 웹 디자인을 위한 기능을 갖춘 flex box 가 도입되면서 CSS 레이아웃이 변하기 시작했다.
+- 요소를 ```display : flex``` 를 설정하면 요소의 항목은 flex item 으로 바뀐다. 또한 flex item 은 flex box 의 기본값에 따라 한 줄로 배열괴고 box 의 높이만큼 길이가 늘어난다.(모든 아이템은 그 안에 든 컨텐츠의 길이와 상관없이 높이가 같아진다.)
+![flex box](./image/flex_box.png)
+
+- 항목을 계속 추가하면 항목이 그 줄에 하나씩 늘어나며, **min-content** 로 설정한 넓이보다 작아 질 수 없으므로 결국에는 box 를 벗어난다. box 를 벗어나지 않게 하려면 여러줄에 표현될 수 있도록 ```flex-wrap : wrap``` 속성을 설정하면 된다.
+
+```
+<div class="flex-box">
+  <div class="item">
+    <p>
+    카드 1
+    </p>
+  </div>
+  <div class="item">
+  <p>
+    카드 2
+    </p>
+  </div>
+  <div class="item">
+  <p>
+    카드 3
+    </p>
+  </div>
+  <div class="item">
+  <p>
+    카드 4
+    </p>
+  </div>
+  <div class="item">
+  <p>
+    카드 5
+    </p>
+  </div>
+
+</div>
+
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.item {
+  border: 1px dotted black;
+  flex-grow : 1;
+  flex-shrink : 1;
+  flex-basis : 200px;
+  box-sizing : border-box;
+}
+
+```
+
+![flex box2](./image/flex_box2.png)
+
+- flex item 이 다음줄로 넘어가면 새로운 줄이 flex box 가 된다. 이는 곧 각 줄마다 개별적으로 사용 가능한 공간을 할당한다는 뜻이다. flex box 는 바로 위나 아래에 있느 다른 flex box 와 선을 맞추어 정렬하지 않는다. 이를 가리켜 **1차원 레이아웃** 이라고 한다. flex box 가 grid 처럼 동작하게 하려면 flex box 의 핵심 기능인 유연성을 조금 제한해야 한다.(flex-grow, flex-shrink, flex-basis 속성 값들을 설정)
+- 정말로 grid layout 을 만드는 것이 목적이라면 CSS grid layout 명세를 권한다.
