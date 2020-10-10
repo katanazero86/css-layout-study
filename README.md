@@ -230,3 +230,193 @@ or
 
 - flex item 이 다음줄로 넘어가면 새로운 줄이 flex box 가 된다. 이는 곧 각 줄마다 개별적으로 사용 가능한 공간을 할당한다는 뜻이다. flex box 는 바로 위나 아래에 있느 다른 flex box 와 선을 맞추어 정렬하지 않는다. 이를 가리켜 **1차원 레이아웃** 이라고 한다. flex box 가 grid 처럼 동작하게 하려면 flex box 의 핵심 기능인 유연성을 조금 제한해야 한다.(flex-grow, flex-shrink, flex-basis 속성 값들을 설정)
 - 정말로 grid layout 을 만드는 것이 목적이라면 CSS grid layout 명세를 권한다.
+
+---
+
+## CSS grid layout
+- flex-box 는 grid layout 을 위해 고안된 것이 아니다. CSS grid layout 은 이름에 걸맞게 CSS 로 grid layout 을 작성한다. 이 명세는 **2차원 레이아웃** 을 다룬다.
+- 줄(row)과 컬럼(column)을 동시에 제어하고 배치가 가능하다.
+- 컨테이너에 ```display: grid``` 속성을 적용하여 사용하며, ```grid-template-colunms``` 속성을 사용하여 넓이가 같은 컬럼 3개를 생성해보자.
+
+```
+<div class="container">
+  <div class="card">
+    <p>
+      카드 1
+    </p>
+  </div>
+  <div class="card">
+    <p>
+      카드 2
+    </p>
+  </div>
+  <div class="card">
+    <p>
+      카드 3
+    </p>
+  </div>
+  <div class="card">
+    <p>
+      카드 4
+    </p>
+  </div>
+</div>
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  border : 1px dotted pink;
+}
+```
+
+![grid](./image/grid.png)
+
+- 3개의 컬럼의 넓이는 각각 **1fr** 로 설정했는데, 이는 사용 가능한 공간을 3개로 나누되 균등한 비율로 나누겠다는 뜻이다. flex box 와 달리 item 요소에 별도의 규칙을 추가하지 않아도 그리드의 각 칸처럼 알맞게 표시된다. ```grid-gap / grid-row-gap / grid-column-gap``` 속성을 사용해 간격을 설정할 수 있다.
+- 2차원 grid 를 사용하면 아이템을 배치하는 방법도 단순하게 사용이 가능하다. gird 에서 각 줄과 컬럼은 해당 번호가 있고 이 번호는 1부터 시작한다. 이 번호의 순서는 문서에 사용된 언어에 따라 달라진다.(영어, 한국어같이 왼쪽에서 오른쪽(LTR)이라면 그리드의 왼쪽 끝이 1번이 된다.)
+
+```
+<div class="container">
+  <div class="card card1">
+    <p>
+      카드 1
+    </p>
+  </div>
+  <div class="card card2">
+    <p>
+      카드 2
+    </p>
+  </div>
+  <div class="card card3">
+    <p>
+      카드 3
+    </p>
+  </div>
+  <div class="card card4">
+    <p>
+      카드 4
+    </p>
+  </div>
+  <div class="card card5">
+    <p>
+      카드 5
+    </p>
+  </div>
+</div>
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4px;
+
+}
+
+.card {
+  border: 1px dotted green;
+}
+
+.card1 {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.card2 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.card3 {
+  grid-column: 1;
+  grid-row: 2 / 4;
+}
+
+.card4 {
+  grid-column: 2 / 4;
+  grid-row: 2;
+}
+
+.card5 {
+  grid-column: 2 / 4;
+  grid-row: 3;
+}
+
+```
+
+![grid2](./image/grid2.png)
+![grid3](./image/grid-image.jpg)
+
+- ```grid-row(grid-row-start / grid-row-end)``` : grid-row-xxx의 단축 속성(행 시작/끝 위치)
+- ```grid-column(grid-column-start / grid-column-end)``` : grid-column-xxx의 단축 속성(열 시작/끝 위치)
+- grid 번호가 매겨지는데, 이미지를 보면 금방 이해가 가능하다.
+- grid item **위치는 이름 있는 영역(named area)** 을 통해서도 설정이 가능하며, CSS 에서 직접 레이아웃의 형태를 기술할 수 있다. ```grid-area``` 속성을 사용하여 이름을 정해준다. 컨테이너에서는 ```grid-template-areas``` 속성의 값을 통해 레이아웃 형태를 정의한다.
+
+```
+<div class="container">
+  <div class="card card1">
+    <p>
+      카드 1
+    </p>
+  </div>
+  <div class="card card2">
+    <p>
+      카드 2
+    </p>
+  </div>
+  <div class="card card3">
+    <p>
+      카드 3
+    </p>
+  </div>
+  <div class="card card4">
+    <p>
+      카드 4
+    </p>
+  </div>
+  <div class="card card5">
+    <p>
+      카드 5
+    </p>
+  </div>
+</div>
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 4px;
+  grid-template-areas:
+  "a a b"
+  ". c c"
+  "d e e"
+}
+
+.card {
+  border: 1px dotted green;
+}
+
+.card1 {
+  grid-area: a;
+}
+
+.card2 {
+  grid-area: b;
+}
+
+.card3 {
+  grid-area: c;
+}
+
+.card4 {
+  grid-area: d;
+}
+
+.card5 {
+  grid-area: e;
+}
+
+```
+
+![grid4](./image/grid3.png)
+
+- 위 예제처럼 공백을 쉽게 만들 수도 있다. 이름은 단순하게 a~e 까지로 설정해서 작성해봤다. 그런데 ```grid-template-areas``` 를 사용할 때 어떤 영역을 여러 칸에 걸쳐 확장하려면 해당 영역의 이름을 여러번 적어야 한다. 빈칸은 마침표(.) 를 사용해서 만든다.
