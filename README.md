@@ -420,3 +420,20 @@ or
 ![grid4](./image/grid3.png)
 
 - 위 예제처럼 공백을 쉽게 만들 수도 있다. 이름은 단순하게 a~e 까지로 설정해서 작성해봤다. 그런데 ```grid-template-areas``` 를 사용할 때 어떤 영역을 여러 칸에 걸쳐 확장하려면 해당 영역의 이름을 여러번 적어야 한다. 빈칸은 마침표(.) 를 사용해서 만든다.
+
+---
+
+## 배치와 정렬
+- 레이아웃에서 요소를 정확하게 배치할 방법은 오랫동안 존재하지 않았다. flex 가 등장하면서 flex item 을 늘리거나 배치할 길이 열렸다.
+> 플렉스 아이템 배치
+> 1. 높이가 같은 컬럼을 만들기 위해 flex item 또는 grid item 이 영역의 높이에 맞게 늘어나는 이유는 ```stretch``` 속성이기 때문에 가능하다.
+> 2. flex box 에 ```align-items``` 속성을 추가하면 다양한 값을 사용해 flex item 을 배치할 수 있다.(**flex-start, center, flex-end, stretch, baseline**) flex-start 속성을 사용하면 flex item 이 flex box 상단에 붙고, flex-end 를 사용하면 바닥에 붙는다. center 는 중간에 배치한다.
+> 3. ```align-self``` 속성을 사용해 ```align-items``` 속성을 덮어쓰기 할 수 있다. 사용가능한 속성값은 동일하지만 개별 flex item 의 배치를 설정한다는 점이 다르다.
+> 4. flex item 배치는 **교차축(cross axis)** 에서 이루어진다. (flex-direction 에 따라 다르다. row 인 경우 교차축은 수직이고 column 인 경우는 수평이다.)
+
+![align-item1](./image/align.png)
+![align-item2](./image/align2.png)
+
+> 그리드 아이템 배치
+> 1. grid item 배치 방식은 flex box 와 같다. flex box 와 마찬가지로 ```align-itmes``` 의 기본값은 stretch 다.(**start, end, center, stretch, baseline**)
+> 2. ```align-self``` 속성을 사용하여 덮어쓰기가 가능하다.
