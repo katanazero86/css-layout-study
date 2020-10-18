@@ -437,3 +437,5 @@ or
 > 그리드 아이템 배치
 > 1. grid item 배치 방식은 flex box 와 같다. flex box 와 마찬가지로 ```align-itmes``` 의 기본값은 stretch 다.(**start, end, center, stretch, baseline**)
 > 2. ```align-self``` 속성을 사용하여 덮어쓰기가 가능하다.
+
+> **예제 : https://codesandbox.io/s/flex-and-grid-example-cdv66**
