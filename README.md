@@ -439,3 +439,8 @@ or
 > 2. ```align-self``` 속성을 사용하여 덮어쓰기가 가능하다.
 
 > **예제 : https://codesandbox.io/s/flex-and-grid-example-cdv66**
+
+---
+
+## 반응형 디자인
+- 반응형 디자인을 작성할 때는 요소를 각각 또는 같은 그룹으로 배치하는 것이 중요
