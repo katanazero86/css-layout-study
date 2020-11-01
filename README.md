@@ -470,3 +470,97 @@ or
 ```
 - 화면 너비가 좁아지면 한 줄에 표시하는 flex item 개수도 줄어든다. (반대로 늘어나면 표시되는 아이템의 개수도 증가한다.)
 - grid layout 을 사용해도 비슷한 결과가 나오지만, **바깥에서 안으로 작업한다는 것을 명심해야한다.**
+- flex 속성 에서 flex-grow flex-shrink flex-basis 라는 세 개의 속성을 사용해서 크기를 조절한다.
+```
+flex-grow : flex item 이 flex-basis 에 설정한 크기보다 커질 수 있는지 설정(flex-basis : 200px 이라고 잡고 만약에 flex-grow : 1 이라면 flex box 에 여유공간이 있을 경우 200px 보다 커진다)
+felx-shrink : flex item 이 flex-basis 에 설정한 크기보다 작아질 수 있느지 설정
+flex-basis : flex item 의 넓이 또는 높이를 설정할 때 사용
+
+CSS 명세에서는 flex-grow, felx-shrink, flex-basis 와 같은 개별 표현보다는 flex 축약 표현 사용을 권장한다.
+flex : 1 0 auto -> flex-grow : 1;  flex-shrink : 0; flex-basis : auto;
+```
+
+---
+
+```
+<div class="flex-box">
+  <div class="item1">
+    아이템 1
+  </div>
+  <div class="item1">
+    아이템 2
+  </div>
+  <div class="item1">
+    아이템 3
+  </div>
+</div>
+
+<br />
+
+<div class="flex-box">
+  <div class="item2">
+    아이템 1
+  </div>
+  <div class="item2">
+    아이템 2
+  </div>
+  <div class="item2">
+    아이템 3
+  </div>
+</div>
+<br />
+<div class="flex-box">
+  <div class="item2 grow-2">
+    아이템 1
+  </div>
+  <div class="item2">
+    아이템 2
+  </div>
+  <div class="item2">
+    아이템 3
+  </div>
+</div>
+<br />
+<div class="flex-box">
+  <div class="item3">
+    아이템 1
+  </div>
+  <div class="item3">
+    아이템 2
+  </div>
+  <div class="item3">
+    아이템 3
+  </div>
+</div>
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border: 1px dotted pink;
+  padding: 2px;
+}
+
+.item1 {
+  flex: 0 0 200px;
+  border: 1px solid skyblue;
+}
+
+
+.item2 {
+  flex: 1 0 200px;
+  border: 1px solid skyblue;
+}
+
+.grow-2 {
+  flex-grow: 2;
+}
+
+.item3 {
+  flex : 1 0 0;
+  border: 1px solid red;
+}
+
+```
+
+![flex-item](./image/flex_item.png)
