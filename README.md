@@ -474,7 +474,7 @@ or
 ```
 flex-grow : flex item 이 flex-basis 에 설정한 크기보다 커질 수 있는지 설정(flex-basis : 200px 이라고 잡고 만약에 flex-grow : 1 이라면 flex box 에 여유공간이 있을 경우 200px 보다 커진다)
 felx-shrink : flex item 이 flex-basis 에 설정한 크기보다 작아질 수 있느지 설정
-flex-basis : flex item 의 넓이 또는 높이를 설정할 때 사용
+flex-basis : flex item 의 넓이 또는 높이를 설정할 때 사용(content, auto 키워드도 설정 가능)
 
 CSS 명세에서는 flex-grow, felx-shrink, flex-basis 와 같은 개별 표현보다는 flex 축약 표현 사용을 권장한다.
 flex : 1 0 auto -> flex-grow : 1;  flex-shrink : 0; flex-basis : auto;
